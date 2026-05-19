@@ -6,9 +6,9 @@ export const Route = createFileRoute("/product")({
   component: Platforms,
   head: () => ({
     meta: [
-      { title: "Platforms — MySocLabs & BlueTeamers | InfoSecDiaries" },
-      { name: "description", content: "Discover MySocLabs and BlueTeamers — InfoSecDiaries' platforms for SOC analyst training and the defensive security community." },
-      { property: "og:title", content: "Platforms — MySocLabs & BlueTeamers" },
+      { title: "Platforms | MySocLabs & BlueTeamers | InfoSecDiaries" },
+      { name: "description", content: "Discover MySocLabs and BlueTeamers, InfoSecDiaries' platforms for SOC analyst training and the defensive security community." },
+      { property: "og:title", content: "Platforms | MySocLabs & BlueTeamers" },
       { property: "og:description", content: "Training and community platforms for the next generation of cyber defenders." },
     ],
   }),
@@ -32,7 +32,7 @@ const platforms = [
     visitUrl: "https://www.infosecdairies.io/",
     tag: "Defensive Security Community",
     blurb:
-      "A learning platform and global community for defenders — bringing together playbooks, detection content, mentorship and structured paths into modern blue team careers.",
+      "A learning platform and global community for defenders, bringing together playbooks, detection content, mentorship and structured paths into modern blue team careers.",
     features: [
       { icon: Users, t: "Practitioner community", d: "Connect with SOC engineers, threat hunters and DFIR responders." },
       { icon: BookOpen, t: "Defender content library", d: "Playbooks, write-ups and curated resources for blue teams." },
@@ -55,7 +55,7 @@ function Platforms() {
             </h1>
 
             <p className="text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto">
-              InfoSecDiaries Private Limited operates two specialised platforms — focused on practical training and community for security operations and blue team professionals.
+              InfoSecDiaries Private Limited operates two specialised platforms, focused on practical training and community for security operations and blue team professionals.
             </p>
           </div>
         </div>
@@ -126,7 +126,7 @@ function Platforms() {
           </h2>
 
           <p className="text-xl text-slate-300 mb-10 max-w-2xl mx-auto">
-            Whether you're a learner, an enterprise looking to upskill your SOC, or a partner — we'd love to talk.
+            Whether you're a learner, an enterprise looking to upskill your SOC, or a partner, we'd love to talk.
           </p>
 
           <Link

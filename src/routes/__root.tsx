@@ -72,10 +72,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "InfoSecDiaries — Cybersecurity for the Modern Enterprise" },
-      { name: "description", content: "InfoSecDiaries Pvt Ltd — penetration testing, threat hunting and 24/7 SOC services." },
+      { title: "InfoSecDiaries | Cybersecurity for the Modern Enterprise" },
+      { name: "description", content: "InfoSecDiaries Pvt Ltd: penetration testing, threat hunting and 24/7 SOC services." },
       { name: "author", content: "InfoSecDiaries Private Limited" },
-      { property: "og:title", content: "InfoSecDiaries — Cybersecurity for the Modern Enterprise" },
+      { property: "og:title", content: "InfoSecDiaries | Cybersecurity for the Modern Enterprise" },
       { property: "og:description", content: "Offensive-minded cybersecurity. We hunt threats before they hunt you." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },

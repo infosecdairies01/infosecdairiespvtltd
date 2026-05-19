@@ -1,13 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
-import { CheckCircle2, Headphones, Linkedin, Mail, MapPin, Twitter } from "lucide-react";
+import { CheckCircle2, Linkedin, Mail, MapPin } from "lucide-react";
 import { useState } from "react";
 
 export const Route = createFileRoute("/contact")({
   component: Contact,
   head: () => ({
     meta: [
-      { title: "Contact — InfoSecDiaries Pvt Ltd" },
+      { title: "Contact | InfoSecDiaries Pvt Ltd" },
       {
         name: "description",
         content:
@@ -243,25 +243,9 @@ function Contact() {
                   <ul className="relative space-y-3">
                     <li>
                       <a
-                        href="tel:+9100000000000"
-                        className="group flex gap-4 rounded-2xl border border-white/[0.08] bg-white/[0.04] p-4 backdrop-blur-[2px] transition hover:border-teal-400/25 hover:bg-white/[0.07]"
-                      >
-                        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-teal-400/20 to-cyan-500/10 text-teal-200 ring-1 ring-white/10 transition group-hover:ring-teal-300/30">
-                          <Headphones className="h-5 w-5" strokeWidth={1.75} />
-                        </span>
-                        <span className="min-w-0">
-                          <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-500">
-                            Phone
-                          </span>
-                          <span className="mt-1 block text-sm font-semibold text-white">
-                            +91 00000 00000
-                          </span>
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="mailto:hello@infosecdiaries.com"
+                        href="https://mail.google.com/mail/?view=cm&fs=1&to=Contact@blueteamers.io"
+                        target="_blank"
+                        rel="noreferrer"
                         className="group flex gap-4 rounded-2xl border border-white/[0.08] bg-white/[0.04] p-4 backdrop-blur-[2px] transition hover:border-teal-400/25 hover:bg-white/[0.07]"
                       >
                         <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-teal-400/20 to-cyan-500/10 text-teal-200 ring-1 ring-white/10 transition group-hover:ring-teal-300/30">
@@ -272,7 +256,7 @@ function Contact() {
                             Email
                           </span>
                           <span className="mt-1 block truncate text-sm font-semibold text-white">
-                            hello@infosecdiaries.com
+                            Contact@blueteamers.io
                           </span>
                         </span>
                       </a>
@@ -314,18 +298,11 @@ function Contact() {
                         <Linkedin className="h-5 w-5" strokeWidth={1.75} />
                       </a>
                       <a
-                        href="https://twitter.com"
+                        href="https://mail.google.com/mail/?view=cm&fs=1&to=Contact@blueteamers.io"
                         target="_blank"
                         rel="noreferrer"
                         className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-slate-200 transition hover:scale-105 hover:border-teal-400/35 hover:text-white"
-                        aria-label="X (Twitter)"
-                      >
-                        <Twitter className="h-5 w-5" strokeWidth={1.75} />
-                      </a>
-                      <a
-                        href="mailto:hello@infosecdiaries.com"
-                        className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-slate-200 transition hover:scale-105 hover:border-teal-400/35 hover:text-white"
-                        aria-label="Email"
+                        aria-label="Gmail"
                       >
                         <Mail className="h-5 w-5" strokeWidth={1.75} />
                       </a>

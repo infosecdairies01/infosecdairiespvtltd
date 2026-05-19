@@ -6,7 +6,7 @@ export const Route = createFileRoute("/about")({
   component: About,
   head: () => ({
     meta: [
-      { title: "About — InfoSecDiaries Pvt Ltd" },
+      { title: "About | InfoSecDiaries Pvt Ltd" },
       {
         name: "description",
         content:
@@ -19,7 +19,7 @@ export const Route = createFileRoute("/about")({
 const values = [
   {
     title: "Adversarial mindset",
-    text: "We plan and operate like the attackers we help you defend against — so controls are tested against reality, not assumptions.",
+    text: "We plan and operate like the attackers we help you defend against, so controls are tested against reality, not assumptions.",
   },
   {
     title: "Radical transparency",
@@ -27,14 +27,14 @@ const values = [
   },
   {
     title: "Outcomes over output",
-    text: "We measure success by reduced risk and verified fixes — not by the thickness of a deliverable.",
+    text: "We measure success by reduced risk and verified fixes, not by the thickness of a deliverable.",
   },
 ];
 
 const process = [
   { step: "01", label: "Listen", detail: "Understand your stack, threats, and business context." },
   { step: "02", label: "Assess", detail: "Execute scoped testing or operations with clear rules of engagement." },
-  { step: "03", label: "Report", detail: "Deliver prioritized, actionable guidance — no boilerplate." },
+  { step: "03", label: "Report", detail: "Deliver prioritized, actionable guidance, no boilerplate." },
   { step: "04", label: "Partner", detail: "Support remediation, re-test, and long-term resilience." },
 ];
 
@@ -62,7 +62,7 @@ function About() {
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-teal-50">
             We are a private cybersecurity firm founded by offensive security specialists who
-            believe defenses should survive contact with real adversaries — not just pass audits.
+            believe defenses should survive contact with real adversaries, not just pass audits.
           </p>
         </div>
       </section>
@@ -86,10 +86,10 @@ function About() {
               <h2 className="text-2xl font-bold text-slate-900 md:text-3xl">What we believe</h2>
               <p className="mt-5 text-base leading-relaxed text-slate-600 md:text-lg">
                 Security is a discipline of craft. Reports should be written by the people who did
-                the work. Engagements should be scoped around your risk — not a catalogue SKU.
+                the work. Engagements should be scoped around your risk, not a catalogue SKU.
               </p>
               <p className="mt-4 text-base leading-relaxed text-slate-600">
-                When something critical surfaces, you speak with an engineer — not an
+                When something critical surfaces, you speak with an engineer, not an
                 account-manager relay.
               </p>
             </div>
@@ -124,7 +124,7 @@ function About() {
         <div className="mx-auto max-w-7xl px-6">
           <h2 className="text-2xl font-bold text-slate-900 md:text-3xl">How we work with you</h2>
           <p className="mt-3 max-w-2xl text-slate-600">
-            A consistent engagement rhythm — from first conversation through verified remediation.
+            A consistent engagement rhythm, from first conversation through verified remediation.
           </p>
           <ol className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {process.map((p, i) => (

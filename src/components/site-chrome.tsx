@@ -38,7 +38,7 @@ export function SiteHeader({ variant = "default" }: { variant?: "default" | "lig
                 light ? "text-neutral-900" : "text-white",
               )}
             >
-              InfoSecDiaries
+              InfosecDiaries
             </div>
             <div
               className={cn(
@@ -155,7 +155,7 @@ export function SiteFooter({
                 darkGrey && "text-neutral-100",
               )}
             >
-              <span className="text-gradient">InfoSec</span>
+              <span className="text-gradient">Infosec</span>
               <span className={cn(light && "text-neutral-900", darkGrey && "text-neutral-200")}>
                 Diaries Pvt Ltd
               </span>
@@ -247,8 +247,20 @@ export function SiteFooter({
               !light && !darkGrey && "text-muted-foreground",
             )}
           >
-            <li>hello@infosecdiaries.com</li>
-            <li>+91 00000 00000</li>
+            <li>
+              <a
+                href="mailto:Contact@blueteamers.io"
+                className={cn(
+                  "hover:underline",
+                  light && "hover:text-neutral-900",
+                  darkGrey && "hover:text-white",
+                  !light && !darkGrey && "hover:text-foreground",
+                )}
+              >
+                Contact@blueteamers.io
+              </a>
+            </li>
+            
           </ul>
         </div>
       </div>
@@ -268,7 +280,7 @@ export function SiteFooter({
             !light && !darkGrey && "text-muted-foreground",
           )}
         >
-          <span>© {new Date().getFullYear()} InfoSecDiaries Private Limited</span>
+          <span>© {new Date().getFullYear()} InfoSecDiaries Private Limited. All rights reserved</span>
           
         </div>
       </div>

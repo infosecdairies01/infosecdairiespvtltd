@@ -16,7 +16,7 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "InfoSecDiaries — Cybersecurity for the Modern Enterprise" },
+      { title: "InfoSecDiaries | Cybersecurity for the Modern Enterprise" },
       {
         name: "description",
         content:
@@ -31,7 +31,7 @@ const homeServices = [
     id: "pentest",
     title: "Penetration Testing",
     tag: "Offensive",
-    desc: "Adversary-simulated assessments across web, mobile, API, cloud, and network — mapped to MITRE ATT&CK with actionable remediation.",
+    desc: "Adversary-simulated assessments across web, mobile, API, cloud, and network, mapped to MITRE ATT&CK with actionable remediation.",
     points: ["OSCP-led engagements", "Free re-test included", "Executive + technical reporting"],
   },
   {
@@ -49,7 +49,7 @@ const homeServices = [
     id: "soc",
     title: "Managed SOC",
     tag: "Operations",
-    desc: "24/7 monitoring, triage, and response tailored to your stack — not a generic MSSP playbook.",
+    desc: "24/7 monitoring, triage, and response tailored to your stack, not a generic MSSP playbook.",
     points: ["Custom detection logic", "Direct analyst access", "Incident war-room support"],
   },
   {
@@ -78,16 +78,16 @@ const homeServices = [
 const platforms = [
   {
     name: "MySocLabs",
-    tag: "Training",
-    desc: "Cyber range and lab platform for SOC analysts — detection, triage, and response in realistic scenarios.",
-    href: "/product" as const,
+    tag: "Service",
+    desc: "Cyber range and lab platform for SOC analysts, detection, triage, and response in realistic scenarios.",
+    siteUrl: "https://www.mysoclabs.com/",
     tone: "from-emerald-600 to-teal-700",
   },
   {
     name: "BlueTeamers",
-    tag: "Community",
+    tag: "Training",
     desc: "Defender community with playbooks, detection content, and structured paths into blue team careers.",
-    href: "/product" as const,
+    siteUrl: "https://www.infosecdairies.io/",
     tone: "from-cyan-600 to-blue-700",
   },
 ];
@@ -95,11 +95,11 @@ const platforms = [
 const whyItems = [
   {
     q: "How are your assessments different from checklist vendors?",
-    a: "Every engagement is led by active practitioners. Findings map to real TTPs, reports are written by hand, and re-tests are included so fixes are verified — not just ticket-closed.",
+    a: "Every engagement is led by active practitioners. Findings map to real TTPs, reports are written by hand, and re-tests are included so fixes are verified, not just ticket-closed.",
   },
   {
     q: "Do we get direct access to engineers?",
-    a: "Yes. You work with your engagement lead throughout — no account-manager relay when something critical surfaces.",
+    a: "Yes. You work with your engagement lead throughout, no account-manager relay when something critical surfaces.",
   },
   {
     q: "Can you work with our existing SOC and tools?",
@@ -107,7 +107,7 @@ const whyItems = [
   },
   {
     q: "What industries do you typically support?",
-    a: "Financial services, healthcare, SaaS, and critical infrastructure — with threat intelligence contextualised to your sector and regulatory landscape.",
+    a: "Financial services, healthcare, SaaS, and critical infrastructure, with threat intelligence contextualised to your sector and regulatory landscape.",
   },
 ];
 
@@ -146,12 +146,11 @@ function Index() {
             </div>
           </div>
 
-          <div className="relative flex items-center justify-center">
-            <div className="absolute inset-0 bg-gradient-brand opacity-10 blur-3xl rounded-full" />
+          <div className="flex items-center justify-center">
             <img
               src={logo}
               alt="InfoSecDiaries logo"
-              className="relative w-64 h-64 md:w-80 md:h-80"
+              className="w-64 h-64 md:w-80 md:h-80"
             />
           </div>
         </div>
@@ -167,7 +166,7 @@ function Index() {
               Explore our services
             </h2>
             <p className="mt-2 text-sm text-teal-50/90 md:text-base">
-              Select a capability to see scope and deliverables — then visit the full services page
+              Select a capability to see scope and deliverables, then visit the full services page
               for engagement models.
             </p>
           </div>
@@ -236,12 +235,7 @@ function Index() {
                   All services
                   <ArrowRight className="h-4 w-4" />
                 </Link>
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-800 transition hover:border-slate-400"
-                >
-                  Discuss this service
-                </Link>
+               
               </div>
             </div>
           </div>
@@ -270,9 +264,11 @@ function Index() {
 
           <div className="space-y-4">
             {platforms.map((p) => (
-              <Link
+              <a
                 key={p.name}
-                to={p.href}
+                href={p.siteUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group relative flex min-h-[9rem] flex-col gap-4 overflow-hidden rounded-xl bg-slate-800 p-8 transition hover:bg-slate-700 md:min-h-[10rem] md:flex-row md:items-center md:justify-between md:p-10"
               >
                 <div
@@ -292,7 +288,7 @@ function Index() {
                   Open platform
                   <ExternalLink className="h-4 w-4 text-teal-400 transition group-hover:translate-x-0.5" />
                 </span>
-              </Link>
+              </a>
             ))}
           </div>
         </div>
@@ -309,7 +305,7 @@ function Index() {
                 Questions teams ask before they engage
               </h2>
               <p className="mt-4 text-slate-600">
-                Expand any item for detail — or reach out and we will walk through fit, scope, and
+                Expand any item for detail, or reach out and we will walk through fit, scope, and
                 timeline on a call.
               </p>
               <Button
@@ -356,14 +352,14 @@ function Index() {
                 Start with a conversation
               </h2>
               <p className="mt-4 text-slate-400">
-                Tell us about your environment and priorities. We will propose a scoped engagement —
+                Tell us about your environment and priorities. We will propose a scoped engagement,
                 assessment, retainer, or managed operations.
               </p>
             </div>
             <div className="flex flex-col justify-center gap-6 bg-white p-10 md:p-14">
               <p className="text-slate-600">
                 Typical first step: a 30-minute discovery call with a senior consultant. No sales
-                deck — just clarity on how we can help.
+                deck, just clarity on how we can help.
               </p>
               <div className="flex flex-col gap-3 sm:flex-row">
                 <Link

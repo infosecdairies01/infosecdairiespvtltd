@@ -8,7 +8,7 @@ export const Route = createFileRoute("/services")({
   component: Services,
   head: () => ({
     meta: [
-      { title: "Services — InfoSecDiaries Pvt Ltd" },
+      { title: "Services | InfoSecDiaries Pvt Ltd" },
       {
         name: "description",
         content:
@@ -43,9 +43,9 @@ const services: Service[] = [
     title: "Penetration Testing",
     category: "offensive",
     tag: "Offensive",
-    desc: "Web, mobile, API, network and IoT assessments led by OSCP/OSCE certified operators — with executive and technical reporting included.",
+    desc: "Web, mobile, API, network and IoT assessments led by OSCP/OSCE certified operators, with executive and technical reporting included.",
     highlights: [
-      "MITRE ATT&CK–aligned findings",
+      "MITRE ATT&CK aligned findings",
       "Free re-test on every engagement",
       "Clear remediation priorities",
     ],
@@ -63,7 +63,7 @@ const services: Service[] = [
     title: "Managed SOC (MDR)",
     category: "detection",
     tag: "Operations",
-    desc: "24/7 detection and response built on your SIEM and EDR — custom analytics, not a generic MSSP playbook.",
+    desc: "24/7 detection and response built on your SIEM and EDR, custom analytics, not a generic MSSP playbook.",
     highlights: ["Tailored detection logic", "Direct analyst access", "Incident war-room support"],
   },
   {
@@ -103,7 +103,7 @@ const services: Service[] = [
     title: "Security Training",
     category: "response",
     tag: "Training",
-    desc: "Hands-on workshops for developers, blue teams, and executives — practical skills, not slide decks.",
+    desc: "Hands-on workshops for developers, blue teams, and executives, practical skills, not slide decks.",
     highlights: ["Role-specific curricula", "Lab-based exercises", "On-site or remote delivery"],
   },
 ];
@@ -231,7 +231,7 @@ function Services() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid items-center gap-16 md:grid-cols-2">
             <div>
-              <h2 className="mb-6 text-4xl font-bold text-white">Why choose InfoSecDiaries?</h2>
+              <h2 className="mb-6 text-4xl font-bold text-white">Why choose InfosecDiaries?</h2>
               <p className="text-lg leading-relaxed text-slate-300">
                 We combine deep technical expertise with practical, business-focused security
                 solutions. Our team of certified professionals brings years of experience across
