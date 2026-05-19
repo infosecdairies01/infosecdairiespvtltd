@@ -263,7 +263,7 @@ function Contact() {
                     </li>
                     <li>
                       <a
-                        href="https://maps.google.com/?q=Bengaluru+India"
+                        href="https://maps.google.com/?q=Hyderabad+Telangana"
                         target="_blank"
                         rel="noreferrer"
                         className="group flex gap-4 rounded-2xl border border-white/[0.08] bg-white/[0.04] p-4 backdrop-blur-[2px] transition hover:border-teal-400/25 hover:bg-white/[0.07]"
@@ -276,7 +276,7 @@ function Contact() {
                             Headquarters
                           </span>
                           <span className="mt-1 block text-sm font-semibold text-white">
-                            Bengaluru, India
+                            Hyderabad, Telangana
                           </span>
                         </span>
                       </a>
