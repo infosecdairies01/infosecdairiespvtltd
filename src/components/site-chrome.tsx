@@ -161,17 +161,7 @@ export function SiteFooter({
               </span>
             </div>
           </div>
-          <p
-            className={cn(
-              "mt-3 text-sm max-w-sm",
-              light && "text-neutral-600",
-              darkGrey && "text-neutral-400",
-              !light && !darkGrey && "text-muted-foreground",
-            )}
-          >
-            Offensive-minded cybersecurity for the modern enterprise. We hunt threats before they
-            hunt you.
-          </p>
+         
         </div>
         <div>
           <div

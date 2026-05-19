@@ -28,50 +28,50 @@ export const Route = createFileRoute("/")({
 
 const homeServices = [
   {
-    id: "pentest",
-    title: "Penetration Testing",
-    tag: "Offensive",
-    desc: "Adversary-simulated assessments across web, mobile, API, cloud, and network, mapped to MITRE ATT&CK with actionable remediation.",
-    points: ["OSCP-led engagements", "Free re-test included", "Executive + technical reporting"],
-  },
-  {
-    id: "hunt",
-    title: "Threat Hunting",
-    tag: "Detection",
-    desc: "Hypothesis-driven hunts across your SIEM and EDR to surface dwell-time threats before they become incidents.",
-    points: [
-      "MITRE-aligned hypotheses",
-      "Detection engineering support",
-      "Findings your SOC can action",
-    ],
-  },
-  {
     id: "soc",
-    title: "Managed SOC",
-    tag: "Operations",
-    desc: "24/7 monitoring, triage, and response tailored to your stack, not a generic MSSP playbook.",
-    points: ["Custom detection logic", "Direct analyst access", "Incident war-room support"],
+    title: "SOC – 24/7 Monitoring",
+    tag: "Defensive",
+    desc: "Continuous monitoring of logs, endpoints, and network traffic to detect and respond to threats in real time.",
+    points: [],
   },
   {
-    id: "red",
-    title: "Red Teaming",
+    id: "mdr",
+    title: "Managed Detection & Response (MDR)",
+    tag: "Defensive",
+    desc: "Advanced detection using EDR/XDR and behavioral analytics to identify sophisticated attacks.",
+    points: [],
+  },
+  {
+    id: "web-pentest",
+    title: "Web Application Pentesting",
     tag: "Offensive",
-    desc: "Objective-based, multi-vector simulations that stress people, process, and technology like a real adversary.",
-    points: ["Full-scope campaigns", "Purple-team options", "Board-ready outcomes"],
+    desc: "Identify OWASP Top 10 vulnerabilities, auth issues, and logic flaws.",
+    points: [],
   },
   {
-    id: "zt",
-    title: "Zero-Trust Advisory",
-    tag: "Advisory",
-    desc: "Identity-first architecture, segmentation roadmaps, and policy design for hostile-by-default environments.",
-    points: ["Architecture workshops", "Phased rollout plans", "Vendor-neutral guidance"],
+    id: "phishing-sim",
+    title: "Phishing Simulation",
+    tag: "Offensive",
+    desc: "Controlled campaigns to test employee awareness and resilience.",
+    points: [],
   },
   {
-    id: "cloud",
-    title: "Cloud Security",
+    id: "vciso",
+    title: "Virtual CISO (vCISO)",
     tag: "Advisory",
-    desc: "AWS, Azure, and GCP reviews covering IAM, workloads, Kubernetes, and infrastructure-as-code misconfigurations.",
-    points: ["Multi-cloud assessments", "IaC review", "Hardening playbooks"],
+    desc: "Strategic cybersecurity leadership without a full-time executive.",
+    points: [],
+  },
+  {
+    id: "training",
+    title: "Security Training",
+    tag: "Advisory",
+    desc: "Hands-on workshops for developers, blue teams, and executives, practical skills, not slide decks.",
+    points: [
+      "Role-specific curricula",
+      "Lab-based exercises",
+      "On-site or remote delivery",
+    ],
   },
 ];
 
@@ -79,14 +79,14 @@ const platforms = [
   {
     name: "MySocLabs",
     tag: "Service",
-    desc: "Cyber range and lab platform for SOC analysts, detection, triage, and response in realistic scenarios.",
+    desc: "Protect your business with our cybersecurity and artificial intelligence expertise. Tailor-made solutions to secure your digital future.",
     siteUrl: "https://www.mysoclabs.com/",
     tone: "from-emerald-600 to-teal-700",
   },
   {
     name: "BlueTeamers",
     tag: "Training",
-    desc: "Defender community with playbooks, detection content, and structured paths into blue team careers.",
+    desc: "Hands-on Blue Team & SOC Training. Learn Detection, Threat Hunting, and Incident Response from Real Practitioners.",
     siteUrl: "https://www.infosecdairies.io/",
     tone: "from-cyan-600 to-blue-700",
   },
@@ -162,7 +162,7 @@ function Index() {
             <p className="text-xs font-semibold uppercase tracking-widest text-teal-200">
               Capabilities
             </p>
-            <h2 className="mt-2 text-4xl font-bold text-white md:text-5xl">
+            <h2 className="mt-2 text-3xl font-bold text-white md:text-4xl">
               Explore our services
             </h2>
             <p className="mt-2 text-sm text-teal-50/90 md:text-base">
@@ -204,7 +204,7 @@ function Index() {
               ))}
             </ul>
 
-            <div className="flex flex-col justify-between p-6 md:p-7" role="tabpanel">
+            <div className="flex flex-col p-6 md:p-7" role="tabpanel">
               <div key={selected.id} className="transition-opacity duration-300">
                 <span className="inline-block rounded-md bg-teal-100 px-2.5 py-1 text-xs font-semibold text-teal-800">
                   {selected.tag}
@@ -215,27 +215,28 @@ function Index() {
                 <p className="mt-3 max-w-xl text-base leading-relaxed text-slate-600">
                   {selected.desc}
                 </p>
-                <ul className="mt-4 space-y-2">
-                  {selected.points.map((pt) => (
-                    <li
-                      key={pt}
-                      className="flex items-center gap-2 text-sm text-slate-700 md:text-base"
-                    >
-                      <span className="h-1.5 w-1.5 rounded-full bg-teal-600" />
-                      {pt}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="mt-4 flex flex-wrap gap-2 border-t border-slate-100 pt-4">
-                <Link
-                  to="/services"
-                  className="inline-flex items-center gap-2 rounded-lg bg-[#007979] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#006868]"
-                >
-                  All services
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-               
+                {selected.points && selected.points.length > 0 && (
+                  <ul className="mt-4 space-y-2">
+                    {selected.points.map((pt) => (
+                      <li
+                        key={pt}
+                        className="flex items-center gap-2 text-sm text-slate-700 md:text-base"
+                      >
+                        <span className="h-1.5 w-1.5 rounded-full bg-teal-600" />
+                        {pt}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                <div className="mt-6">
+                  <Link
+                    to="/services"
+                    className="inline-flex items-center gap-2 rounded-lg bg-[#007979] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#006868]"
+                  >
+                    All services
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

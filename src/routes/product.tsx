@@ -18,9 +18,9 @@ const platforms = [
   {
     name: "MySocLabs",
     visitUrl: undefined,
-    tag: "SOC Analyst Training Platform",
+    tag: "Service",
     blurb:
-      "An immersive cyber range built for Security Operations Center analysts. Hands-on labs that simulate real attacks, real telemetry and the real tooling you'll use on the job.",
+      "Protect your business with our cybersecurity and artificial intelligence expertise. Tailor-made solutions to secure your digital future.",
     features: [
       { icon: Beaker, t: "Realistic attack scenarios", d: "Curated incidents mapped to MITRE ATT&CK techniques." },
       { icon: ShieldCheck, t: "Detection engineering", d: "Write, tune and test detections inside live SIEM environments." },
@@ -30,9 +30,9 @@ const platforms = [
   {
     name: "BlueTeamers",
     visitUrl: "https://www.infosecdairies.io/",
-    tag: "Defensive Security Community",
+    tag: "Training",
     blurb:
-      "A learning platform and global community for defenders, bringing together playbooks, detection content, mentorship and structured paths into modern blue team careers.",
+      "Hands-on Blue Team & SOC Training. Learn Detection, Threat Hunting, and Incident Response from Real Practitioners.",
     features: [
       { icon: Users, t: "Practitioner community", d: "Connect with SOC engineers, threat hunters and DFIR responders." },
       { icon: BookOpen, t: "Defender content library", d: "Playbooks, write-ups and curated resources for blue teams." },
@@ -48,14 +48,17 @@ function Platforms() {
 
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-slate-900 to-slate-800">
-        <div className="mx-auto max-w-7xl px-6 pt-16 pb-20">
+        <div className="mx-auto max-w-7xl px-6 py-10 md:py-12">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
+            <h1 className="text-3xl md:text-4xl font-bold text-white leading-snug mb-3">
               Two platforms powering the next generation of cyber defenders
             </h1>
 
-            <p className="text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto">
-              InfoSecDiaries Private Limited operates two specialised platforms, focused on practical training and community for security operations and blue team professionals.
+            <p className="text-base md:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto">
+              <span className="font-semibold text-white">MySocLabs</span> delivers cybersecurity and
+              AI expertise with solutions tailored to your digital future.{" "}
+              <span className="font-semibold text-white">BlueTeamers</span> offers hands-on Blue Team
+              & SOC training in detection, threat hunting, and incident response.
             </p>
           </div>
         </div>

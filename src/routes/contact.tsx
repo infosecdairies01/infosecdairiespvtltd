@@ -289,7 +289,7 @@ function Contact() {
                     </p>
                     <div className="mt-4 flex gap-3">
                       <a
-                        href="https://linkedin.com"
+                        href="https://www.linkedin.com/company/infosecdairies/"
                         target="_blank"
                         rel="noreferrer"
                         className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-slate-200 transition hover:scale-105 hover:border-teal-400/35 hover:text-white"

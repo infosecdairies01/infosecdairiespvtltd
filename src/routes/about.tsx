@@ -38,12 +38,7 @@ const process = [
   { step: "04", label: "Partner", detail: "Support remediation, re-test, and long-term resilience." },
 ];
 
-const facts = [
-  { value: "2019", label: "Founded" },
-  { value: "40+", label: "Security engineers" },
-  { value: "12", label: "CVEs disclosed" },
-  { value: "100+", label: "Clients served" },
-];
+
 
 function About() {
   return (
@@ -144,18 +139,7 @@ function About() {
         </div>
       </section>
 
-      <section className="bg-slate-900 py-14">
-        <div className="mx-auto max-w-7xl px-6">
-          <dl className="grid grid-cols-2 gap-8 text-center md:grid-cols-4 md:gap-6">
-            {facts.map((f) => (
-              <div key={f.label}>
-                <dt className="text-3xl font-bold text-white md:text-4xl">{f.value}</dt>
-                <dd className="mt-2 text-sm text-slate-400">{f.label}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-      </section>
+
 
       <section className="bg-[#007979] py-14">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-6 sm:flex-row">

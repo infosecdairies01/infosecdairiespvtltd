@@ -18,7 +18,7 @@ export const Route = createFileRoute("/services")({
   }),
 });
 
-type CategoryId = "all" | "offensive" | "detection" | "cloud" | "response";
+type CategoryId = "all" | "defensive" | "offensive" | "advisory";
 
 type Service = {
   id: string;
@@ -31,80 +31,167 @@ type Service = {
 
 const categories: { id: CategoryId; label: string }[] = [
   { id: "all", label: "All services" },
+  { id: "defensive", label: "Defensive" },
   { id: "offensive", label: "Offensive" },
-  { id: "detection", label: "Detection" },
-  { id: "cloud", label: "Cloud & advisory" },
-  { id: "response", label: "Response" },
+  { id: "advisory", label: "Advisory" },
 ];
 
 const services: Service[] = [
   {
-    id: "pentest",
-    title: "Penetration Testing",
-    category: "offensive",
-    tag: "Offensive",
-    desc: "Web, mobile, API, network and IoT assessments led by OSCP/OSCE certified operators, with executive and technical reporting included.",
+    id: "soc",
+    title: "SOC – 24/7 Monitoring",
+    category: "defensive",
+    tag: "Defensive",
+    desc: "Continuous monitoring of logs, endpoints, and network traffic to detect and respond to threats in real time.",
     highlights: [
-      "MITRE ATT&CK aligned findings",
-      "Free re-test on every engagement",
-      "Clear remediation priorities",
+      "Real-time threat detection",
+      "Log and traffic analysis",
+      "24/7 eyes on glass"
     ],
   },
   {
-    id: "redteam",
-    title: "Red Team Operations",
+    id: "mdr",
+    title: "Managed Detection & Response (MDR)",
+    category: "defensive",
+    tag: "Defensive",
+    desc: "Advanced detection using EDR/XDR and behavioral analytics to identify sophisticated attacks.",
+    highlights: [
+      "EDR/XDR integration",
+      "Behavioral analytics",
+      "Automated threat response"
+    ],
+  },
+  {
+    id: "ir",
+    title: "Incident Response (IR)",
+    category: "defensive",
+    tag: "Defensive",
+    desc: "Rapid containment, investigation, recovery, and post-incident analysis.",
+    highlights: [
+      "Rapid containment",
+      "Forensic investigation",
+      "Post-incident analysis"
+    ],
+  },
+  {
+    id: "vm",
+    title: "Vulnerability Management",
+    category: "defensive",
+    tag: "Defensive",
+    desc: "Continuous discovery, assessment, and prioritization of vulnerabilities.",
+    highlights: [
+      "Continuous discovery",
+      "Risk-based prioritization",
+      "Remediation guidance"
+    ],
+  },
+  {
+    id: "ns",
+    title: "Network Security",
+    category: "defensive",
+    tag: "Defensive",
+    desc: "Firewall protection, IDS/IPS, segmentation, and malicious traffic detection.",
+    highlights: [
+      "Firewall management",
+      "IDS/IPS implementation",
+      "Network segmentation"
+    ],
+  },
+  {
+    id: "ecs",
+    title: "Email & Cloud Security",
+    category: "defensive",
+    tag: "Defensive",
+    desc: "Protection against phishing, malware, and account compromise.",
+    highlights: [
+      "Anti-phishing controls",
+      "Malware protection",
+      "Account takeover prevention"
+    ],
+  },
+  {
+    id: "web-pentest",
+    title: "Web Application Pentesting",
     category: "offensive",
     tag: "Offensive",
-    desc: "Objective-based, multi-vector simulations that mirror real adversaries against your people, process, and technology.",
-    highlights: ["Full-scope campaigns", "Purple-team collaboration", "Board-ready outcomes"],
+    desc: "Identify OWASP Top 10 vulnerabilities, auth issues, and logic flaws.",
+    highlights: [
+      "OWASP Top 10 coverage",
+      "Business logic testing",
+      "Actionable reporting"
+    ],
   },
   {
-    id: "soc",
-    title: "Managed SOC (MDR)",
-    category: "detection",
-    tag: "Operations",
-    desc: "24/7 detection and response built on your SIEM and EDR, custom analytics, not a generic MSSP playbook.",
-    highlights: ["Tailored detection logic", "Direct analyst access", "Incident war-room support"],
+    id: "network-pentest",
+    title: "Network Pentesting",
+    category: "offensive",
+    tag: "Offensive",
+    desc: "Simulated attacks to uncover misconfigurations and exposed services.",
+    highlights: [
+      "Internal & external testing",
+      "Misconfiguration discovery",
+      "Exploitation validation"
+    ],
   },
   {
-    id: "hunt",
-    title: "Threat Hunting",
-    category: "detection",
-    tag: "Detection",
-    desc: "Hypothesis-driven hunts to surface dwell-time threats before they become headline incidents.",
-    highlights: ["MITRE-aligned hypotheses", "Detection engineering input", "Actionable hunt reports"],
+    id: "phishing-sim",
+    title: "Phishing Simulation",
+    category: "offensive",
+    tag: "Offensive",
+    desc: "Controlled campaigns to test employee awareness and resilience.",
+    highlights: [
+      "Custom phishing scenarios",
+      "Click-rate tracking",
+      "User training integration"
+    ],
   },
   {
-    id: "cloud",
-    title: "Cloud Security",
-    category: "cloud",
-    tag: "Cloud",
-    desc: "AWS, Azure, and GCP reviews covering IAM, workloads, Kubernetes, and infrastructure-as-code misconfigurations.",
-    highlights: ["Multi-cloud assessments", "IaC and posture review", "Hardening playbooks"],
-  },
-  {
-    id: "zt",
-    title: "Zero-Trust Advisory",
-    category: "cloud",
+    id: "vciso",
+    title: "Virtual CISO (vCISO)",
+    category: "advisory",
     tag: "Advisory",
-    desc: "Identity-first architecture roadmaps, segmentation strategy, and policy design for hostile-by-default environments.",
-    highlights: ["Architecture workshops", "Phased rollout plans", "Vendor-neutral guidance"],
+    desc: "Strategic cybersecurity leadership without a full-time executive.",
+    highlights: [
+      "Security roadmap development",
+      "Board-level reporting",
+      "Budget optimization"
+    ],
   },
   {
-    id: "dfir",
-    title: "DFIR & Incident Response",
-    category: "response",
-    tag: "Response",
-    desc: "Rapid containment, forensic analysis, and post-incident hardening when minutes matter.",
-    highlights: ["24/7 response readiness", "Forensic chain of custody", "Post-incident remediation"],
+    id: "sec-awareness",
+    title: "Security Awareness Training",
+    category: "advisory",
+    tag: "Advisory",
+    desc: "Role-based training to reduce human risk.",
+    highlights: [
+      "Role-specific modules",
+      "Interactive learning",
+      "Compliance tracking"
+    ],
+  },
+  {
+    id: "compliance",
+    title: "Compliance Support",
+    category: "advisory",
+    tag: "Advisory",
+    desc: "ISO 27001, SOC 2, GDPR, HIPAA, PCI-DSS readiness.",
+    highlights: [
+      "Gap analysis",
+      "Policy development",
+      "Audit preparation"
+    ],
   },
   {
     id: "training",
     title: "Security Training",
-    category: "response",
-    tag: "Training",
+    category: "advisory",
+    tag: "Advisory",
     desc: "Hands-on workshops for developers, blue teams, and executives, practical skills, not slide decks.",
-    highlights: ["Role-specific curricula", "Lab-based exercises", "On-site or remote delivery"],
+    highlights: [
+      "Role-specific curricula",
+      "Lab-based exercises",
+      "On-site or remote delivery"
+    ],
   },
 ];
 
@@ -133,11 +220,10 @@ function Services() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="text-3xl font-bold leading-tight text-white md:text-4xl">
-              Comprehensive cybersecurity solutions
+              Comprehensive cybersecurity Services
             </h1>
             <p className="mt-4 text-base leading-relaxed text-blue-50/90 md:text-[0.95rem]">
-              From penetration testing to managed SOC services, we provide end-to-end security
-              solutions tailored to your organization&apos;s needs.
+              Defensive, offensive, and advisory services aligned to your risk posture.
             </p>
           </div>
         </div>
