@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useRef } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { cn } from "@/lib/utils";
@@ -43,11 +43,7 @@ const services: Service[] = [
     category: "defensive",
     tag: "Defensive",
     desc: "Continuous monitoring of logs, endpoints, and network traffic to detect and respond to threats in real time.",
-    highlights: [
-      "Real-time threat detection",
-      "Log and traffic analysis",
-      "24/7 eyes on glass"
-    ],
+    highlights: [],
   },
   {
     id: "mdr",
@@ -55,11 +51,7 @@ const services: Service[] = [
     category: "defensive",
     tag: "Defensive",
     desc: "Advanced detection using EDR/XDR and behavioral analytics to identify sophisticated attacks.",
-    highlights: [
-      "EDR/XDR integration",
-      "Behavioral analytics",
-      "Automated threat response"
-    ],
+    highlights: [],
   },
   {
     id: "ir",
@@ -67,11 +59,7 @@ const services: Service[] = [
     category: "defensive",
     tag: "Defensive",
     desc: "Rapid containment, investigation, recovery, and post-incident analysis.",
-    highlights: [
-      "Rapid containment",
-      "Forensic investigation",
-      "Post-incident analysis"
-    ],
+    highlights: [],
   },
   {
     id: "vm",
@@ -79,11 +67,7 @@ const services: Service[] = [
     category: "defensive",
     tag: "Defensive",
     desc: "Continuous discovery, assessment, and prioritization of vulnerabilities.",
-    highlights: [
-      "Continuous discovery",
-      "Risk-based prioritization",
-      "Remediation guidance"
-    ],
+    highlights: [],
   },
   {
     id: "ns",
@@ -91,11 +75,7 @@ const services: Service[] = [
     category: "defensive",
     tag: "Defensive",
     desc: "Firewall protection, IDS/IPS, segmentation, and malicious traffic detection.",
-    highlights: [
-      "Firewall management",
-      "IDS/IPS implementation",
-      "Network segmentation"
-    ],
+    highlights: [],
   },
   {
     id: "ecs",
@@ -103,11 +83,7 @@ const services: Service[] = [
     category: "defensive",
     tag: "Defensive",
     desc: "Protection against phishing, malware, and account compromise.",
-    highlights: [
-      "Anti-phishing controls",
-      "Malware protection",
-      "Account takeover prevention"
-    ],
+    highlights: [],
   },
   {
     id: "web-pentest",
@@ -115,11 +91,7 @@ const services: Service[] = [
     category: "offensive",
     tag: "Offensive",
     desc: "Identify OWASP Top 10 vulnerabilities, auth issues, and logic flaws.",
-    highlights: [
-      "OWASP Top 10 coverage",
-      "Business logic testing",
-      "Actionable reporting"
-    ],
+    highlights: [],
   },
   {
     id: "network-pentest",
@@ -127,11 +99,7 @@ const services: Service[] = [
     category: "offensive",
     tag: "Offensive",
     desc: "Simulated attacks to uncover misconfigurations and exposed services.",
-    highlights: [
-      "Internal & external testing",
-      "Misconfiguration discovery",
-      "Exploitation validation"
-    ],
+    highlights: [],
   },
   {
     id: "phishing-sim",
@@ -139,11 +107,7 @@ const services: Service[] = [
     category: "offensive",
     tag: "Offensive",
     desc: "Controlled campaigns to test employee awareness and resilience.",
-    highlights: [
-      "Custom phishing scenarios",
-      "Click-rate tracking",
-      "User training integration"
-    ],
+    highlights: [],
   },
   {
     id: "vciso",
@@ -151,23 +115,7 @@ const services: Service[] = [
     category: "advisory",
     tag: "Advisory",
     desc: "Strategic cybersecurity leadership without a full-time executive.",
-    highlights: [
-      "Security roadmap development",
-      "Board-level reporting",
-      "Budget optimization"
-    ],
-  },
-  {
-    id: "sec-awareness",
-    title: "Security Awareness Training",
-    category: "advisory",
-    tag: "Advisory",
-    desc: "Role-based training to reduce human risk.",
-    highlights: [
-      "Role-specific modules",
-      "Interactive learning",
-      "Compliance tracking"
-    ],
+    highlights: [],
   },
   {
     id: "compliance",
@@ -175,11 +123,7 @@ const services: Service[] = [
     category: "advisory",
     tag: "Advisory",
     desc: "ISO 27001, SOC 2, GDPR, HIPAA, PCI-DSS readiness.",
-    highlights: [
-      "Gap analysis",
-      "Policy development",
-      "Audit preparation"
-    ],
+    highlights: [],
   },
   {
     id: "training",
@@ -198,6 +142,7 @@ const services: Service[] = [
 function Services() {
   const [category, setCategory] = useState<CategoryId>("all");
   const [selectedId, setSelectedId] = useState(services[0].id);
+  const detailsRef = useRef<HTMLElement>(null);
 
   const filtered = useMemo(
     () => (category === "all" ? services : services.filter((s) => s.category === category)),
@@ -210,6 +155,15 @@ function Services() {
     setCategory(id);
     const next = id === "all" ? services[0] : services.find((s) => s.category === id);
     if (next) setSelectedId(next.id);
+  };
+
+  const selectService = (id: string) => {
+    setSelectedId(id);
+    if (typeof window !== "undefined" && window.innerWidth < 1024) {
+      setTimeout(() => {
+        detailsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 50);
+    }
   };
 
   return (
@@ -255,19 +209,19 @@ function Services() {
           </div>
 
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] lg:items-start lg:gap-10">
-            <ul className="grid list-none grid-cols-1 gap-2 auto-rows-min p-0 sm:grid-cols-2">
+            <ul className="grid list-none grid-cols-1 gap-2 p-0 sm:grid-cols-2">
               {filtered.map((s) => {
                 const isSelected = selected.id === s.id;
                 return (
-                  <li key={s.id} className="min-h-0">
+                  <li key={s.id} className="flex">
                     <button
                       type="button"
-                      onClick={() => setSelectedId(s.id)}
+                      onClick={() => selectService(s.id)}
                       className={cn(
-                        "h-auto w-full self-start rounded-lg border bg-white px-4 py-3.5 text-left transition",
+                        "w-full flex flex-col justify-start rounded-lg border bg-white px-4 py-3.5 text-left transition border-l-4",
                         isSelected
-                          ? "border-[#007979] border-l-4 shadow-md"
-                          : "border-slate-200 hover:border-slate-300 hover:shadow-sm",
+                          ? "border-[#007979] shadow-md"
+                          : "border-slate-200 border-l-transparent hover:border-slate-300 hover:shadow-sm",
                       )}
                     >
                       <span className="text-[11px] font-semibold uppercase tracking-wide text-[#007979]">
@@ -283,8 +237,9 @@ function Services() {
             </ul>
 
             <article
+              ref={detailsRef}
               key={selected.id}
-              className="flex flex-col justify-between rounded-xl border border-slate-200 bg-white p-6 shadow-sm md:min-h-[20rem] md:p-8"
+              className="scroll-mt-6 flex flex-col justify-between rounded-xl border border-slate-200 bg-white p-6 shadow-sm md:min-h-[20rem] md:p-8"
             >
               <div>
                 <span className="text-xs font-semibold uppercase tracking-wide text-[#007979]">
@@ -292,14 +247,16 @@ function Services() {
                 </span>
                 <h3 className="mt-2 text-2xl font-bold text-slate-900">{selected.title}</h3>
                 <p className="mt-4 leading-relaxed text-slate-600">{selected.desc}</p>
-                <ul className="mt-6 space-y-2 border-t border-slate-100 pt-6">
-                  {selected.highlights.map((h) => (
-                    <li key={h} className="flex gap-2 text-sm text-slate-700">
-                      <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[#007979]" />
-                      {h}
-                    </li>
-                  ))}
-                </ul>
+                {selected.highlights && selected.highlights.length > 0 && (
+                  <ul className="mt-6 space-y-2 border-t border-slate-100 pt-6">
+                    {selected.highlights.map((h) => (
+                      <li key={h} className="flex gap-2 text-sm text-slate-700">
+                        <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[#007979]" />
+                        {h}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
               <Link
                 to="/contact"
