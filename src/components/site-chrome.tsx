@@ -96,34 +96,67 @@ export function SiteHeader({ variant = "default" }: { variant?: "default" | "lig
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
+      {/* Mobile Menu Backdrop */}
       {open && (
         <div
-          className={cn(
-            "md:hidden border-t",
-            black && "border-neutral-800 bg-neutral-900",
-            light && "border-neutral-200 bg-white/98",
-            !black && !light && "border-neutral-800 bg-neutral-900",
-          )}
-        >
-          <div className="px-6 py-4 flex flex-col gap-3">
-            {links.map((l) => (
-              <Link
-                key={l.to}
-                to={l.to}
-                className={cn(
-                  "text-sm",
-                  black && "text-neutral-300 hover:text-white",
-                  light && "text-neutral-600",
-                  !black && !light && "text-neutral-300 hover:text-white",
-                )}
-                onClick={() => setOpen(false)}
-              >
-                {l.label}
-              </Link>
-            ))}
-          </div>
-        </div>
+          className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm md:hidden animate-fade-in"
+          onClick={() => setOpen(false)}
+        />
       )}
+
+      {/* Mobile Menu Sidebar Drawer */}
+      <div
+        className={cn(
+          "fixed top-0 right-0 z-50 h-full w-72 max-w-[80vw] border-l shadow-2xl transition-transform duration-300 ease-in-out md:hidden flex flex-col",
+          black && "border-neutral-800 bg-neutral-900",
+          light && "border-neutral-200 bg-white",
+          !black && !light && "border-neutral-800 bg-neutral-900",
+          open ? "translate-x-0" : "translate-x-full",
+        )}
+      >
+        {/* Header inside drawer */}
+        <div className="h-16 px-6 flex items-center justify-between border-b border-inherit shrink-0">
+          <span className={cn("text-xs font-bold uppercase tracking-wider", light ? "text-neutral-500" : "text-neutral-400")}>
+            Menu
+          </span>
+          <button
+            className={cn(light ? "text-neutral-900" : "text-white")}
+            onClick={() => setOpen(false)}
+            aria-label="Close menu"
+          >
+            <X className="h-6 w-6" />
+          </button>
+        </div>
+
+        {/* Links list */}
+        <div className="px-6 py-6 flex flex-col gap-4 flex-1 overflow-y-auto">
+          {links.map((l) => (
+            <Link
+              key={l.to}
+              to={l.to}
+              className={cn(
+                "text-base py-1.5 transition font-medium",
+                black && "text-neutral-300 hover:text-white",
+                light && "text-neutral-600 hover:text-neutral-900",
+                !black && !light && "text-neutral-300 hover:text-white",
+              )}
+              onClick={() => setOpen(false)}
+            >
+              {l.label}
+            </Link>
+          ))}
+          <Link
+            to="/contact"
+            className={cn(
+              "text-sm font-medium px-4 py-2.5 mt-4 rounded-md bg-gradient-brand text-primary-foreground hover:opacity-90 transition text-center shrink-0",
+              black ? "shadow-[0_0_24px_-4px_rgba(52,211,153,0.45)]" : "glow",
+            )}
+            onClick={() => setOpen(false)}
+          >
+            Get a Quote
+          </Link>
+        </div>
+      </div>
     </header>
   );
 }

@@ -139,7 +139,7 @@ function Index() {
               </Link>
               <Link
                 to="/services"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-md border border-border text-foreground hover:bg-muted transition"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-md border border-slate-200/20 bg-white/8 backdrop-blur-sm text-foreground shadow-sm hover:bg-white/20 hover:shadow-md transition-all duration-300"
               >
                 View services
               </Link>
