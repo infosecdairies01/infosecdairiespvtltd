@@ -40,12 +40,16 @@ function Contact() {
     const fd   = new FormData(form);
 
     try {
+      const dialCode = (fd.get("dial") as string) ?? "";
+      const phoneNum = (fd.get("phone") as string) ?? "";
+      const fullPhone = phoneNum.trim() ? `${dialCode} ${phoneNum}`.trim() : undefined;
+
       await submitContact({
         data: {
           firstName: fd.get("firstName") as string,
           lastName:  fd.get("lastName")  as string,
           email:     fd.get("email")     as string,
-          phone:     fd.get("phone")     as string,
+          phone:     fullPhone,
           message:   fd.get("message")   as string,
         },
       });

@@ -19,18 +19,24 @@ export type ContactFormData = z.infer<typeof contactSchema>;
 export const submitContact = createServerFn({ method: "POST" })
   .inputValidator((raw: unknown) => contactSchema.parse(raw))
   .handler(async ({ data }) => {
-    // Layer 2: mongo-sanitize — strips any MongoDB operator keys ($where, $ne …)
-    const clean = sanitize({ ...data }) as ContactFormData;
+    try {
+      // Layer 2: mongo-sanitize — strips any MongoDB operator keys ($where, $ne …)
+      const clean = sanitize({ ...data }) as ContactFormData;
 
-    await connectDB();
+      await connectDB();
 
-    await Submission.create({
-      firstName: clean.firstName,
-      lastName:  clean.lastName,
-      email:     clean.email,
-      phone:     clean.phone ?? "",
-      message:   clean.message,
-    });
+      await Submission.create({
+        firstName: clean.firstName,
+        lastName:  clean.lastName,
+        email:     clean.email,
+        phone:     clean.phone ?? "",
+        message:   clean.message,
+      });
 
-    return { success: true };
+      return { success: true };
+    } catch (err) {
+      // Log full error server-side so we can diagnose in dev
+      console.error("[submitContact] Error:", err);
+      throw err;
+    }
   });
