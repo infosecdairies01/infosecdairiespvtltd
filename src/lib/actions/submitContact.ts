@@ -10,7 +10,7 @@ const contactSchema = z.object({
   lastName:  z.string().min(1, "Last name is required").max(100).trim(),
   email:     z.string().email("Invalid email address").max(254).trim().toLowerCase(),
   phone:     z.string().max(25).trim().optional(),
-  message:   z.string().min(10, "Message must be at least 10 characters").max(5000).trim(),
+  message:   z.string().min(1, "Message is required").max(5000).trim(),
 });
 
 export type ContactFormData = z.infer<typeof contactSchema>;

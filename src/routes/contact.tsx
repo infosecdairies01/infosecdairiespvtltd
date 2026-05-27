@@ -3,6 +3,7 @@ import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { CheckCircle2, Linkedin, Mail, MapPin } from "lucide-react";
 import { useState } from "react";
 import { submitContact } from "@/lib/actions/submitContact";
+import { ZodError } from "zod";
 
 export const Route = createFileRoute("/contact")({
   component: Contact,
@@ -55,7 +56,12 @@ function Contact() {
       });
       setSent(true);
     } catch (err) {
-      setError("Something went wrong. Please try again or email us directly.");
+      if (err instanceof ZodError) {
+        // Show the first validation message clearly
+        setError(err.errors[0]?.message ?? "Please check your inputs and try again.");
+      } else {
+        setError("Something went wrong. Please try again or email us directly.");
+      }
       console.error(err);
     } finally {
       setLoading(false);
