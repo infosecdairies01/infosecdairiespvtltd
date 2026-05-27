@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { CheckCircle2, Linkedin, Mail, MapPin } from "lucide-react";
 import { useState } from "react";
+import { submitContact } from "@/lib/actions/submitContact";
 
 export const Route = createFileRoute("/contact")({
   component: Contact,
@@ -26,7 +27,36 @@ const dialCodes = [
 ] as const;
 
 function Contact() {
-  const [sent, setSent] = useState(false);
+  const [sent, setSent]       = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError]     = useState<string | null>(null);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+
+    const form = e.currentTarget;
+    const fd   = new FormData(form);
+
+    try {
+      await submitContact({
+        data: {
+          firstName: fd.get("firstName") as string,
+          lastName:  fd.get("lastName")  as string,
+          email:     fd.get("email")     as string,
+          phone:     fd.get("phone")     as string,
+          message:   fd.get("message")   as string,
+        },
+      });
+      setSent(true);
+    } catch (err) {
+      setError("Something went wrong. Please try again or email us directly.");
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
     <div className="min-h-screen flex flex-col bg-[#e8ecf2] text-slate-900 antialiased">
@@ -88,10 +118,7 @@ function Contact() {
 
                   <form
                     className="mt-8 space-y-5"
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      setSent(true);
-                    }}
+                    onSubmit={handleSubmit}
                   >
                     {sent ? (
                       <div className="flex flex-col items-center rounded-2xl border border-slate-100 bg-slate-50/60 py-16 text-center">
@@ -206,12 +233,19 @@ function Contact() {
                           />
                         </div>
 
+                        {error && (
+                          <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-2.5">
+                            {error}
+                          </p>
+                        )}
+
                         <div className="flex justify-end border-t border-slate-100/90 pt-6">
                           <button
                             type="submit"
-                            className="inline-flex items-center justify-center rounded-xl bg-[#0c2238] px-9 py-3.5 text-sm font-semibold text-white shadow-[0_14px_36px_-12px_rgba(12,34,56,0.55)] transition hover:bg-[#0f2d4d] hover:shadow-[0_18px_44px_-14px_rgba(12,34,56,0.5)] active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0c2238]"
+                            disabled={loading}
+                            className="inline-flex items-center justify-center rounded-xl bg-[#0c2238] px-9 py-3.5 text-sm font-semibold text-white shadow-[0_14px_36px_-12px_rgba(12,34,56,0.55)] transition hover:bg-[#0f2d4d] hover:shadow-[0_18px_44px_-14px_rgba(12,34,56,0.5)] active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0c2238] disabled:opacity-60 disabled:cursor-not-allowed"
                           >
-                            Send a Message
+                            {loading ? "Sending…" : "Send a Message"}
                           </button>
                         </div>
                       </>
