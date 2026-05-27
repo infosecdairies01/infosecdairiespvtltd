@@ -17,7 +17,7 @@ export const Route = createFileRoute("/product")({
 const platforms = [
   {
     name: "MySocLabs",
-    visitUrl: undefined,
+    visitUrl: "https://www.mysoclabs.com/",
     tag: "Service",
     blurb:
       "Protect your business with our cybersecurity and artificial intelligence expertise. Tailor-made solutions to secure your digital future.",
