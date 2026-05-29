@@ -17,6 +17,9 @@ export default defineConfig({
     plugins: [
       nitro({
         preset: "vercel",
+        externals: {
+          external: ["mongoose", "mongodb", "mongo-sanitize"],
+        },
       }),
     ],
   },
