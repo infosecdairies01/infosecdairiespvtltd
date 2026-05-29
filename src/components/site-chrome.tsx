@@ -272,7 +272,7 @@ export function SiteFooter({
           >
             <li>
               <a
-                href="mailto:Contact@blueteamers.io"
+                href="mailto:Contact@infosecdairies.io"
                 className={cn(
                   "hover:underline",
                   light && "hover:text-neutral-900",
@@ -280,7 +280,7 @@ export function SiteFooter({
                   !light && !darkGrey && "hover:text-foreground",
                 )}
               >
-                Contact@blueteamers.io
+                Contact@infosecdairies.io
               </a>
             </li>
             

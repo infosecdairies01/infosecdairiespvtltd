@@ -243,7 +243,7 @@ function Contact() {
                   <ul className="relative space-y-3">
                     <li>
                       <a
-                        href="https://mail.google.com/mail/?view=cm&fs=1&to=Contact@blueteamers.io"
+                        href="https://mail.google.com/mail/?view=cm&fs=1&to=Contact@infosecdairies.io"
                         target="_blank"
                         rel="noreferrer"
                         className="group flex gap-4 rounded-2xl border border-white/[0.08] bg-white/[0.04] p-4 backdrop-blur-[2px] transition hover:border-teal-400/25 hover:bg-white/[0.07]"
@@ -256,7 +256,7 @@ function Contact() {
                             Email
                           </span>
                           <span className="mt-1 block truncate text-sm font-semibold text-white">
-                            Contact@blueteamers.io
+                            Contact@infosecdairies.io
                           </span>
                         </span>
                       </a>
@@ -298,7 +298,7 @@ function Contact() {
                         <Linkedin className="h-5 w-5" strokeWidth={1.75} />
                       </a>
                       <a
-                        href="https://mail.google.com/mail/?view=cm&fs=1&to=Contact@blueteamers.io"
+                        href="https://mail.google.com/mail/?view=cm&fs=1&to=Contact@infosecdairies.io"
                         target="_blank"
                         rel="noreferrer"
                         className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-slate-200 transition hover:scale-105 hover:border-teal-400/35 hover:text-white"
