@@ -1,32 +1,13 @@
-import mongoose from "mongoose";
+import { createClient } from "@supabase/supabase-js";
 
-const MONGODB_URI = process.env.MONGODB_URI;
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-if (!MONGODB_URI) {
-  throw new Error("Missing MONGODB_URI environment variable");
+if (!supabaseUrl || !supabaseServiceKey) {
+  throw new Error("Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY environment variables");
 }
 
-// Cache the connection across hot-reloads in dev (avoids connection exhaustion)
-declare global {
-  // eslint-disable-next-line no-var
-  var _mongooseCache: { conn: typeof mongoose | null; promise: Promise<typeof mongoose> | null };
-}
-
-if (!global._mongooseCache) {
-  global._mongooseCache = { conn: null, promise: null };
-}
-
-const cache = global._mongooseCache;
-
-export async function connectDB(): Promise<typeof mongoose> {
-  if (cache.conn) return cache.conn;
-
-  if (!cache.promise) {
-    cache.promise = mongoose.connect(MONGODB_URI as string, {
-      bufferCommands: false,
-    });
-  }
-
-  cache.conn = await cache.promise;
-  return cache.conn;
-}
+// Service-role client — server-side only, bypasses RLS
+export const supabase = createClient(supabaseUrl, supabaseServiceKey, {
+  auth: { persistSession: false },
+});
