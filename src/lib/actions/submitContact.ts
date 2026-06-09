@@ -1,8 +1,5 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-import sanitize from "mongo-sanitize";
-import { connectDB } from "../db";
-import { Submission } from "../models/submission";
 
 // ── Layer 1: Zod schema — validates types, formats and length limits ──────────
 const contactSchema = z.object({
@@ -20,6 +17,12 @@ export const submitContact = createServerFn({ method: "POST" })
   .inputValidator((raw: unknown) => contactSchema.parse(raw))
   .handler(async ({ data }) => {
     try {
+      const [{ default: sanitize }, { connectDB }, { Submission }] = await Promise.all([
+        import("mongo-sanitize"),
+        import("../db"),
+        import("../models/submission"),
+      ]);
+
       // Layer 2: mongo-sanitize — strips any MongoDB operator keys ($where, $ne …)
       const clean = sanitize({ ...data }) as ContactFormData;
 
