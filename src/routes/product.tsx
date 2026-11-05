@@ -29,7 +29,7 @@ const platforms = [
   },
   {
     name: "BlueTeamers",
-    visitUrl: "https://www.infosecdairies.io/",
+    visitUrl: "https://blueteamers.io/",
     tag: "Training",
     blurb:
       "Hands-on Blue Team & SOC Training. Learn Detection, Threat Hunting, and Incident Response from Real Practitioners.",
